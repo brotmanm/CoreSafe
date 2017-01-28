@@ -1,0 +1,45 @@
+PODS:
+  - ABTextFieldAnimations (0.2.1)
+  - BFKit (1.9.3)
+  - BFPaperButton (2.1.1)
+  - BFPaperTableViewCell (2.3.8)
+  - BFRadialWaveView (1.5.0)
+  - CarbonKit (2.1.9)
+  - FontAwesomeTools (1.2)
+  - HPReorderTableView (0.2)
+  - LLSimpleCamera (5.0.0)
+  - LTNavigationBar (2.1.8)
+  - MBSegueCollection (0.2.1)
+  - SIAlertView (1.3)
+
+DEPENDENCIES:
+  - ABTextFieldAnimations (~> 0.2)
+  - BFKit (~> 1.9)
+  - BFPaperButton (~> 2.0)
+  - BFPaperTableViewCell (~> 2.3)
+  - BFRadialWaveView (~> 1.4)
+  - CarbonKit (~> 2.1)
+  - FontAwesomeTools (~> 1.2)
+  - HPReorderTableView (~> 0.2)
+  - LLSimpleCamera (~> 5.0)
+  - LTNavigationBar (~> 2.1)
+  - MBSegueCollection (~> 0.2)
+  - SIAlertView (~> 1.3)
+
+SPEC CHECKSUMS:
+  ABTextFieldAnimations: a34d609d9f52efefa053020eb109c08c45385786
+  BFKit: e581dc0609b462aea9ceb02417ceb5b26ede3316
+  BFPaperButton: c76835e789669f64d600dc68934cc60fbb550bb9
+  BFPaperTableViewCell: 1f7afb64b91aea37dc116725157ca0fedb9bb004
+  BFRadialWaveView: a38635a13d0354bd465aa73ee4f2ac83fa448f4f
+  CarbonKit: af16a9c0d2b6c908a5985fe4633424d38c9bfc0a
+  FontAwesomeTools: bd6e4882eed916ed07f8d0ff0fc2972c77640d27
+  HPReorderTableView: fbecadc7f8b2d5a138d976aa5fe6fbb09524022a
+  LLSimpleCamera: 7175ccb81be71c83d79933089322eb662b1f0327
+  LTNavigationBar: 04d302e25a18016487c0dff408c39f533cb30118
+  MBSegueCollection: d837c6645ade9607dd4ff1161ec995d5485c157a
+  SIAlertView: 20c794b55eaf44d888773ea51647cf8907723919
+
+PODFILE CHECKSUM: 3019c0181ece7edb97fcc1c0de6830f78489c4b5
+
+COCOAPODS: 1.0.0
