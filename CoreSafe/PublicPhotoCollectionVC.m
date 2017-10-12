@@ -234,7 +234,6 @@
                 cell.layer.borderColor = [UIColor clearColor].CGColor;
             }
             else{
-                NSLog(@"here");
                 cell.layer.borderWidth = 8;
                 cell.layer.borderColor = [UIColor paperColorBlue100].CGColor;
             }

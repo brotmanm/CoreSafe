@@ -7,7 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SafeNote.h"
 
 @interface KeyVC : UIViewController
+
+-(void)fillKeyArray;
+
+-(void)toggleEditingMode;
+-(void)saveAndReloadTableView;
+-(void)addNote:(SafeNote*)note;
+-(void)deleteNoteAtIndex:(NSUInteger)index;
+
+@property NSUInteger currentlySelectedNoteIndex;
 
 @end

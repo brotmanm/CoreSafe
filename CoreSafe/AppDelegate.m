@@ -17,18 +17,24 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
     [application setStatusBarHidden:NO];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    //BOOL setupComplete = [defaults boolForKey:@"setupComplete"];
-    BOOL setupComplete = YES;
+    
+    //Check if the user has already set up their security
+    BOOL setupComplete = [defaults boolForKey:@"setupComplete"];
     
     if (setupComplete) {
         UIStoryboard *storyboard = self.window.rootViewController.storyboard;
+        
+        //If they have, they should be immediately sent to the lockscreen
         UIViewController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"LockScreenVC"];
         self.window.rootViewController = rootViewController;
         [self.window makeKeyAndVisible];
     }
+    
+    //If they have not set up their security, they will be automatically sent to setup
     
     return YES;
 }

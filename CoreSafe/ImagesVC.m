@@ -188,7 +188,7 @@
     return frame;
 }
 
-#pragma mark - PublicPhotCollectionDelegate
+#pragma mark - PublicPhotoCollectionDelegate
 -(void)photoCollection:(PublicPhotoCollectionVC *)vc didChooseImages:(NSArray *)imageDataArray {
     [_images insertObjects:imageDataArray atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, imageDataArray.count)]];
     [_collectionView reloadData];

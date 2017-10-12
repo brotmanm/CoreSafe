@@ -7,8 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BFKit.h"
-#import "BFRadialWaveView.h"
 
 @interface BouncyButton : UIButton
 

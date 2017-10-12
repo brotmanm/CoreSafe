@@ -17,9 +17,14 @@
 
 @interface MainControllerVC () <CarbonTabSwipeNavigationDelegate>
 
+//The images, or letters, that will appear in the swip bar
 @property NSArray* swipeItems;
+
+//Our holder for our 5 controllers.
+//Includes a navigation bar at the top.
 @property CarbonTabSwipeNavigation* swipeNav;
 
+//These buttons will carry through all our 5 controllers, we can modify them based on which controller we're in.
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *leftBarButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *rightBarButton;
 
@@ -34,19 +39,23 @@ int currentIndex = 0;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //Instantiate our 5 controllers
     self.homeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeVC"];
     self.infoVC = [self.storyboard instantiateViewControllerWithIdentifier:@"InfoVC"];
     self.keyVC = [self.storyboard instantiateViewControllerWithIdentifier:@"KeyVC"];
     self.imagesVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ImagesVC"];
     self.settingsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingsVC"];
     
+    //Set the navigation bar.
     _swipeItems = @[fa_home, fa_folder, fa_key, fa_picture_o, fa_cog];
+    
+    //Create the navigator with a bar with the items above
     self.swipeNav = [[CarbonTabSwipeNavigation alloc] initWithItems:_swipeItems delegate:self];
     [self.swipeNav insertIntoRootViewController:self];
     
+    //Configure the navbar
     [self.navigationController.navigationBar lt_setBackgroundColor:[UIColor paperColorBlueGray700]];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor paperColorBlue50],
-                                                 
                                                                       NSFontAttributeName: [UIFont fontWithName:@"ArialHebrew-Bold" size:20]}];
     [self.navigationController.navigationBar setTintColor:[UIColor paperColorBlue100]];
     self.navigationController.navigationBar.translucent = YES;
@@ -68,12 +77,14 @@ int currentIndex = 0;
     
     [self.view setBackgroundColor:[UIColor paperColorBlueGray900]];
     
+    //Configure the left bar button
     [self.leftBarButton setTitleTextAttributes:@{
                                                  NSFontAttributeName:[FontAwesome fontWithSize:26],
                                                  NSForegroundColorAttributeName: [UIColor paperColorBlue100]
                                                  } forState:UIControlStateNormal];
     [self.leftBarButton setTarget:self];
     
+    //configure the right bar button
     [self.rightBarButton setTitleTextAttributes:@{
                                                   NSFontAttributeName:[FontAwesome fontWithSize:26],
                                                   NSForegroundColorAttributeName: [UIColor paperColorBlue100]
@@ -88,6 +99,7 @@ int currentIndex = 0;
     [self.view addSubview:_darkIndicatorBackground];
     [waveView show];
     
+    //Asynchronously load our data
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^(void){
         
         [self setupViewControllers];
@@ -100,6 +112,7 @@ int currentIndex = 0;
     });
 }
 
+//Load all our data
 -(void)setupViewControllers {
     [self.infoVC fillInfoArray];
     [self.imagesVC fillImages];
@@ -114,10 +127,12 @@ int currentIndex = 0;
     // Dispose of any resources that can be recreated.
 }
 
+//Lock the app (needs work)
 -(void)lockApp:(id)sender {
     [self performSegueWithIdentifier:@"LockSegue" sender:sender];
 }
 
+//Change the right bar button action based on which view controller we're in
 -(void)rightButtonAction:(id)sender {
     switch (currentIndex) {
         case 0:
@@ -139,6 +154,8 @@ int currentIndex = 0;
 }
 
 #pragma mark - CarbonTabSwipeNavigation Delegate
+
+//Set up our view controllers are various indeces in our carbon navbar
 - (nonnull UIViewController *)carbonTabSwipeNavigation: (nonnull CarbonTabSwipeNavigation *)carbontTabSwipeNavigation
                                  viewControllerAtIndex:(NSUInteger)index {
     switch (index) {
@@ -157,6 +174,7 @@ int currentIndex = 0;
     }
 }
 
+//COnfigure the left bar button and right bar button based on which view controller we're in
 - (void)carbonTabSwipeNavigation:(nonnull CarbonTabSwipeNavigation *)carbonTabSwipeNavigation
                  willMoveAtIndex:(NSUInteger)index {
     switch (index) {
@@ -191,6 +209,7 @@ int currentIndex = 0;
     }
 }
 
+//Set the current index when we swipe to a different view controller
 - (void)carbonTabSwipeNavigation:(nonnull CarbonTabSwipeNavigation *)carbonTabSwipeNavigation
                   didMoveAtIndex:(NSUInteger)index {
     currentIndex = (int)index;

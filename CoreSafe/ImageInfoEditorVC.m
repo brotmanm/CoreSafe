@@ -17,6 +17,7 @@
 #import "CameraVC.h"
 #import "SRActionSheet.h"
 #import "ImageViewer.h"
+#import "BFRadialWaveView.h"
 
 @interface ImageInfoEditorVC () <UIImagePickerControllerDelegate ,UIScrollViewDelegate, ImageViewerDelegate>
 

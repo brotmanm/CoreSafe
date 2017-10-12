@@ -74,6 +74,7 @@ BOOL unlocked = NO;
     unlockButton.cornerRadius = unlockButton.frame.size.width / 2;
     [self.view addSubview: unlockButton];
     
+    //Check if they have touchID enabled, and enable the touchID button if necessary
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     BOOL touchIDEnabled = [defaults boolForKey:@"touchIDEnabled"];
     if (touchIDEnabled){
@@ -109,6 +110,7 @@ BOOL unlocked = NO;
     [_waveView show];
 }
 
+//Add little blue lines in background
 -(void)addClouds {
     UIColor* cloudColor = [UIColor colorWithColor:[UIColor paperColorBlue100] alpha:0.15];
     int numCLouds = 30;
@@ -134,6 +136,7 @@ BOOL unlocked = NO;
     }
 }
 
+//When the user hits the unlock button, show them a screen where they can enter a password
 -(void)showPasswordScreen:(id)sender {
     if (unlocked) {
         return;
@@ -189,26 +192,37 @@ BOOL unlocked = NO;
     cancelButton.alpha = 0.8;
     [_darkView addSubview:cancelButton];
     
+    //Animate in the password textfield
     [UIView animateWithDuration:.4 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations: ^  { _darkView.backgroundColor = [UIColor colorWithColor:[UIColor blackColor] alpha:0.9]; } completion:^(BOOL completed) { }];
+    
     [UIView animateWithDuration:.4 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations: ^  {  _passField.height = 70; } completion:^(BOOL completed) {
+        
         [UIView animateWithDuration:.7 delay:.001 options:UIViewAnimationOptionCurveEaseInOut animations: ^  {  _passField.frame = CGRectMake(_darkView.frame.size.width*.05, _passField.frame.origin.y, _darkView.frame.size.width*0.9, _passField.height); } completion:^(BOOL completed) {
             [_passField becomeFirstResponder];
         }];
     }];
 }
 
+//If the user exits the unlock screen
 -(void)cancelUnlock:(id)sender {
     [_passField resignFirstResponder];
+    
+    //Animate out everything
     [UIView animateWithDuration:.5 delay:0 usingSpringWithDamping:0.9 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseInOut animations: ^{ _darkView.transform = CGAffineTransformMakeScale(.001, .001); _darkView.origin = CGPointMake(0, 0);} completion:^(BOOL finished) {
         [_darkView removeFromSuperview];
      }];
 }
 
+//Have the user enter their touchID
 -(void)enterTouchID:(id)sender {
     if (unlocked) {
         return;
     }
-    [BFTouchID showTouchIDAuthenticationWithReason:BFLocalizedString(@"Authentication", @"") fallbackTitle:@""  completion:^(TouchIDResult result) { //ask for the user's touchID
+    
+    //TouchID authentication
+    [BFTouchID showTouchIDAuthenticationWithReason:BFLocalizedString(@"Authentication", @"")
+                                     fallbackTitle:@""
+                                        completion:^(TouchIDResult result) { //ask for the user's touchID
         switch (result) {
             case TouchIDResultSuccess: { //if the touchID was a success
                 runOnMainThread(^{
@@ -255,11 +269,15 @@ BOOL unlocked = NO;
     }];
 }
 
+//If the user enters a successful password
 -(void)unloadDarkView:(BOOL)animated {
     [_passField resignFirstResponder];
     _passField.text = @"";
+    
     if (animated) {
+        //Animate out the password Screen
         [UIView animateWithDuration:.5 delay:.1 options:UIViewAnimationOptionCurveEaseInOut animations: ^  {  _passField.width = _passField.layer.borderWidth*2; _passField.origin = CGPointMake(_darkView.width/2-_passField.layer.borderWidth, _passField.origin.y); } completion:^(BOOL completed) {
+            
             [UIView animateWithDuration:.5 delay:0 usingSpringWithDamping:0.9 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseInOut animations: ^{ _darkView.transform = CGAffineTransformMakeScale(.001, 1);} completion:^(BOOL finished) {
                 [_darkView removeFromSuperview];
                 [self performUnlock:_passField];
@@ -268,6 +286,7 @@ BOOL unlocked = NO;
     }
 }
 
+//Perform unlock animations
 -(void)performUnlock:(id)sender {
     [UIView animateWithDuration:0.7 delay:.01 options:UIViewAnimationOptionCurveEaseInOut animations:^ {
         _waveView.alpha = 0;
@@ -278,6 +297,8 @@ BOOL unlocked = NO;
 }
 
 #pragma mark - UITextFieldDelegate
+
+//When editing the password, if the password is a match, automatically unlock
 -(void)textFieldDidChange:(UITextField*)textField {
     if (textField == _passField) {
          if ([textField.text isEqualToString: _firstPassword] || [textField.text isEqualToString: _secondPassword]) {
@@ -291,6 +312,7 @@ BOOL unlocked = NO;
     }
 }
 
+//Allow the user to manually hit the done button
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     BOOL shouldReturn = NO;
     if (textField == _passField){
@@ -298,7 +320,7 @@ BOOL unlocked = NO;
             unlocked = YES;
             [self unloadDarkView:YES];
         }
-        else {
+        else { //If the password is not correct
             textField.layer.borderColor = [UIColor colorWithColor:[UIColor paperColorRed200] alpha:0.9].CGColor;
             [textField shake];
             [BFSystemSound playSystemSoundVibrate];

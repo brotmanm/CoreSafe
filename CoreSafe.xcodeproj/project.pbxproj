@@ -24,8 +24,10 @@
 		216EE8591E2F2DE900227A50 /* StairSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 216EE8581E2F2DE900227A50 /* StairSegue.m */; };
 		217325FB1E2DD654004C5036 /* ImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 217325FA1E2DD654004C5036 /* ImageCell.m */; };
 		2179D7A21E2C320400EDA7AA /* ZoomableImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2179D7A11E2C320400EDA7AA /* ZoomableImage.m */; };
+		217FB1C31E412489003440CB /* KeyEditorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 217FB1C21E412489003440CB /* KeyEditorVC.m */; };
 		2184363B1E2B461A00D38142 /* ImageViewer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2184363A1E2B461A00D38142 /* ImageViewer.m */; };
 		218AA25F1E12117700C52CFD /* touchID.png in Resources */ = {isa = PBXBuildFile; fileRef = 218AA25E1E12117700C52CFD /* touchID.png */; };
+		2190E3961E3EE9B200429156 /* key.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2190E3951E3EE9B200429156 /* key.jpg */; };
 		219F0CD21E0F376A0091E503 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 219F0CD11E0F376A0091E503 /* main.m */; };
 		219F0CD51E0F376A0091E503 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 219F0CD41E0F376A0091E503 /* AppDelegate.m */; };
 		219F0CDB1E0F376A0091E503 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 219F0CD91E0F376A0091E503 /* Main.storyboard */; };
@@ -97,9 +99,12 @@
 		217325FA1E2DD654004C5036 /* ImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCell.m; sourceTree = "<group>"; };
 		2179D7A01E2C320400EDA7AA /* ZoomableImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoomableImage.h; sourceTree = "<group>"; };
 		2179D7A11E2C320400EDA7AA /* ZoomableImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoomableImage.m; sourceTree = "<group>"; };
+		217FB1C11E412489003440CB /* KeyEditorVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyEditorVC.h; sourceTree = "<group>"; };
+		217FB1C21E412489003440CB /* KeyEditorVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyEditorVC.m; sourceTree = "<group>"; };
 		218436391E2B461900D38142 /* ImageViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewer.h; sourceTree = "<group>"; };
 		2184363A1E2B461A00D38142 /* ImageViewer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewer.m; sourceTree = "<group>"; };
 		218AA25E1E12117700C52CFD /* touchID.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = touchID.png; sourceTree = "<group>"; };
+		2190E3951E3EE9B200429156 /* key.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = key.jpg; sourceTree = "<group>"; };
 		219F0CCD1E0F376A0091E503 /* CoreSafe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreSafe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		219F0CD11E0F376A0091E503 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		219F0CD31E0F376A0091E503 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -181,6 +186,7 @@
 		2109FD191E0F417B00274DE9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2190E3951E3EE9B200429156 /* key.jpg */,
 				21C079C71E17369700BD6053 /* DarkMoon.jpg */,
 				21C079C01E172CB700BD6053 /* GreenStars.jpg */,
 				21C079A71E14135B00BD6053 /* stars.jpg */,
@@ -224,6 +230,8 @@
 			children = (
 				21CE0F5A1E25B0CA00D87190 /* InfoEditorControllerVC.h */,
 				21CE0F5B1E25B0CA00D87190 /* InfoEditorControllerVC.m */,
+				217FB1C11E412489003440CB /* KeyEditorVC.h */,
+				217FB1C21E412489003440CB /* KeyEditorVC.m */,
 				21CE0F631E25B20200D87190 /* InfoVC's */,
 				214D65481E221E0E005E1971 /* CameraVC.h */,
 				214D65491E221E0E005E1971 /* CameraVC.m */,
@@ -481,6 +489,7 @@
 			files = (
 				219F0CE01E0F376A0091E503 /* LaunchScreen.storyboard in Resources */,
 				2133DC031E13897800B904FD /* CoreLock.jpg in Resources */,
+				2190E3961E3EE9B200429156 /* key.jpg in Resources */,
 				21C079C81E17369700BD6053 /* DarkMoon.jpg in Resources */,
 				219F0CDD1E0F376A0091E503 /* Assets.xcassets in Resources */,
 				2109FD231E0F6F6C00274DE9 /* sunset.jpg in Resources */,
@@ -562,6 +571,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2179D7A21E2C320400EDA7AA /* ZoomableImage.m in Sources */,
+				217FB1C31E412489003440CB /* KeyEditorVC.m in Sources */,
 				217325FB1E2DD654004C5036 /* ImageCell.m in Sources */,
 				21CE0F5F1E25B1EA00D87190 /* TextInfoEditorVC.m in Sources */,
 				21C079B61E171E1400BD6053 /* InfoVC.m in Sources */,

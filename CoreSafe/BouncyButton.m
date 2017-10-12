@@ -63,12 +63,20 @@
 }
 
 - (void)setRaised:(BOOL)raised {
-    [self createRectShadowWithOffset:CGSizeMake(3, 4) opacity:0.4 radius:4];
+    if (raised) {
+        self.layer.shadowColor = [UIColor blackColor].CGColor;
+        self.layer.shadowRadius = 4;
+        self.layer.shadowOpacity = 0.5;
+        self.layer.shadowOffset = CGSizeMake(2, 4);
+        self.layer.masksToBounds = NO;
+    } else {
+        self.layer.shadowColor = [UIColor clearColor].CGColor;
+    }
 }
 
 -(void)setupRaised:(BOOL)shouldBeRaised {
     if (shouldBeRaised){
-        [self createRectShadowWithOffset:CGSizeMake(3, 4) opacity:0.4 radius:4];
+        [self setRaised:YES];
     }
     //self.originalFrame = self.frame;
     
